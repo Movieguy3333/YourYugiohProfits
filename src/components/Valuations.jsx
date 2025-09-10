@@ -108,7 +108,11 @@ function Valuations() {
           </div>
         </>
       ) : (
-        <h1>No cards in collection...</h1>
+        <>
+          <h1 className={styles["no-collection"]}>
+            No collection to evaluate... 😢{" "}
+          </h1>
+        </>
       )}
     </div>
   );

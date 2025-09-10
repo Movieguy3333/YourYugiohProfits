@@ -8,7 +8,7 @@ h2 {
   width: 100%; /* Change this to whatever width you want. */
   padding-top: 10px; /* This creates some space between the element and the border. */
   margin-bottom: 20px;
-  border-top: 3px solid rgb(210, 189, 1);
+  border-top: 3px solid rgb(154, 138, 0);
   margin-right: 50%;
 }
 
@@ -20,7 +20,7 @@ h2 {
   padding-bottom: 20px;
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  -webkit-text-stroke: 0.5px rgb(130, 119, 0);
+  -webkit-text-stroke: 0.5px rgb(144, 132, 0);
   text-align: left;
 }
 .collection-header:after {

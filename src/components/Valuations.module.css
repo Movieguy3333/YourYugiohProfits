@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.no-collection {
+  margin-top: 20px;
+}
+
 .card-image {
   float: left;
   object-fit: cover;
