@@ -108,7 +108,7 @@ function Valuations() {
           </div>
         </>
       ) : (
-        <p>No cards in collection...</p>
+        <h1>No cards in collection...</h1>
       )}
     </div>
   );

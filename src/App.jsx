@@ -19,11 +19,15 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<HomePage />} />
+
           <Route path="sign-up" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="account" element={<Account />} />
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<Navigate replace to="valuations" />} />
+            <Route
+              index
+              element={<Navigate replace to="add-to-collection" />}
+            />
             <Route path="valuations" element={<Valuations />} />
             <Route path="add-to-collection" element={<AddToCollection />} />
           </Route>

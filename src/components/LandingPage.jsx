@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom"; // Import Link from React Router
 import styles from "./LandingPage.module.css"; // Import the CSS module
 import Button from "./Button";
@@ -9,7 +10,7 @@ function LandingPage() {
       <div className={styles["landing-page"]}>
         <header className={styles["header"]}>
           <div className={styles["hero-content"]}>
-            <h1 className={styles["title"]}>Welcome to DuelVault</h1>
+            <h1 className={styles["title"]}>Welcome to YourYugiohProfits</h1>
             <p className={styles["subtitle"]}>
               The ultimate Yu-Gi-Oh! app for making profits!
             </p>
@@ -38,7 +39,7 @@ function LandingPage() {
           <div className={styles["feature"]}>
             <h3>Manage Your Collection</h3>
             <p>
-              Add cards to your collection to track finacnial value of cards
+              Add cards to your collection to track financial value of cards
             </p>
           </div>
           <div className={styles["feature"]}>

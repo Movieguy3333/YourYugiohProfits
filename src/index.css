@@ -21,28 +21,19 @@ body {
   );
   background-color: #080808;
   color: #fff;
-  /*   display: flex;
-  flex-direction: column;
-  min-height: 100vh; */
 }
 
 .app {
-  display: flex;
+  margin-top: 40px;
+  /* display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 1; */
 }
 input {
   font-family: "Courier New", Courier, monospace;
 }
-form,
-input {
-}
 
-@media (min-height: 500px) {
-  form {
-  }
-}
-
+/* END OF FILE */
 /* 
 .header {
   width: 100%;

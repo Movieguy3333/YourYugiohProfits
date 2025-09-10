@@ -16,6 +16,7 @@ function AppProvider({ children }) {
 
   const [user, setUser] = useState(storedUser);
   const [collection, setCollection] = useState(storedCollection);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -186,6 +187,8 @@ function AppProvider({ children }) {
         handleDeleteFromCollection,
         handleSetPriceAlert,
         handleSetPriceAlertAmount,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

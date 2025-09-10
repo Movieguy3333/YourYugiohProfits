@@ -4,9 +4,12 @@ import { useContext } from "react";
 import Button from "./Button";
 import { AppContext } from "../contextapi/AppContext";
 import styles from "./CardSearchItem.module.css";
+import Spinner from "./Spinner";
 
 function CardSearchItem({ card }) {
-  const { handleAddToCollection } = useContext(AppContext);
+  const { handleAddToCollection, isLoading } = useContext(AppContext);
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.cardSearchItem}>
@@ -17,9 +20,7 @@ function CardSearchItem({ card }) {
         className={styles.cardImage}
       />
 
-      <p>
-        <strong>Price:</strong> ${card.card_prices[0].tcgplayer_price || "N/A"}
-      </p>
+      <h2>Price: ${card.card_prices[0].tcgplayer_price || "N/A"}</h2>
 
       <Button onClick={handleAddToCollection} card={card}>
         Add To Collection

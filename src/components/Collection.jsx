@@ -14,7 +14,7 @@ function Collection() {
   return (
     <>
       <h1 className={styles["collection-header"]}>
-        {user ? `${user.username}'s Collection` : "User not signed in"}
+        {user ? `${user.username}'s Collection` : "Your Collection"}
       </h1>
 
       {collection.length !== 0 && (
@@ -36,7 +36,7 @@ function Collection() {
             <CollectionItem key={card.id} card={card} />
           ))
         ) : (
-          <p>No cards found...</p>
+          <p>No cards in collection...</p>
         )}
       </div>
     </>

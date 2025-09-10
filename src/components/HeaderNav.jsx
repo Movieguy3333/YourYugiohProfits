@@ -17,6 +17,14 @@ function HeaderNav() {
             Home Page
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/app/add-to-collection"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Collection
+          </NavLink>
+        </li>
         {!user ? (
           <>
             <li>
@@ -38,14 +46,6 @@ function HeaderNav() {
           </>
         ) : (
           <>
-            <li>
-              <NavLink
-                to="/app/add-to-collection"
-                className={({ isActive }) => (isActive ? styles.active : "")}
-              >
-                Collection
-              </NavLink>
-            </li>
             <li>
               <NavLink
                 to="account"

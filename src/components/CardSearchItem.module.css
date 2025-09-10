@@ -1,11 +1,31 @@
+h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.3em;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #969b00, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+h4 {
+}
+
 .cardSearchItem {
   background-color: #000000;
+  background-image: linear-gradient(
+    to bottom left,
+    rgb(0, 0, 0),
+    rgb(11, 11, 0),
+    rgb(15, 14, 0),
+    rgba(87, 74, 0, 0.758),
+    rgb(0, 0, 0),
+    rgb(41, 41, 0),
+    rgb(0, 0, 0)
+  );
   padding: 15px;
   border-radius: 10px;
   text-align: center;
   margin: 20px;
 
-  box-shadow: 0px 0px 30px 25px rgb(215, 208, 2);
+  box-shadow: 0px 0px 20px 10px rgb(215, 208, 2);
 }
 
 .cardImage {

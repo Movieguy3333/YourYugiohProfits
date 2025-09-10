@@ -5,7 +5,7 @@ function Footer() {
     <footer className={styles["footer"]}>
       <div className={styles["footer-content"]}>
         <p className={styles["footer-text"]}>
-          © 2025 DuelVault All rights reserved.
+          © 2025 YourYugiohProfits All rights reserved.
         </p>
 
         <div className={styles["social-links"]}>

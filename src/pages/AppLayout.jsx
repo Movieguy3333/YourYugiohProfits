@@ -10,7 +10,6 @@ import Instructions from "../components/Instructions";
 function AppLayout() {
   return (
     <div className="app">
-      <Instructions />
       <AppNav />
       <Outlet />
       <Collection />
