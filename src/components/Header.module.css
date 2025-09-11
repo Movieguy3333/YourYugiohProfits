@@ -18,6 +18,9 @@
   margin-bottom: 10px;
   align-items: center;
 }
+.website-header {
+  font-family: "Times New Roman", Times, serif;
+}
 
 .logo {
   flex: 1;

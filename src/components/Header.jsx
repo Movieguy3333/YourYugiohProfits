@@ -8,7 +8,7 @@ function Header() {
     <header className={styles.header}>
       {" "}
       <Logo />
-      <h2>YourYugiohProfits</h2>
+      <h1 className={styles["website-header"]}>YourYugiohProfits</h1>
       <HeaderNav />
     </header>
   );
