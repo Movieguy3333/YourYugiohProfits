@@ -30,7 +30,7 @@ function Collection() {
         </div>
       )}
 
-      <div className={styles.collection}>
+      <div className={styles.collection} id="collection">
         {filteredCollection.length !== 0 ? (
           filteredCollection.map((card) => (
             <CollectionItem key={card.id} card={card} />

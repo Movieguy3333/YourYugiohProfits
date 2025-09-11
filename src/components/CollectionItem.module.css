@@ -96,7 +96,9 @@ input[type="number"] {
   }
   .card-info {
     float: left;
-    border-right: 6px groove #2f2700d5;
+    border-right: 2.5px solid #b39607d5;
+
+    border-top-right-radius: 30px;
 
     /* box-shadow: 0px 0px 200px 3px rgb(215, 208, 2); */
   }
@@ -108,11 +110,11 @@ input[type="number"] {
   }
   .price-alert-info p:first-of-type {
     margin-top: 10px;
-    font-size: 1.8em;
+    font-size: 1.3em;
   }
   .price-alert-info p:last-of-type {
     margin-top: 20px;
-    font-size: 1.7em;
+    font-size: 1.3em;
   }
   .price-alert-info p {
   }
@@ -121,12 +123,12 @@ input[type="number"] {
   }
 }
 
-@media screen and (min-width: 790px) {
+@media screen and (min-width: 780px) {
   .collection-item {
   }
   .price-alert-info {
     height: 100%;
-    font-size: 1.5em;
+    font-size: 1.3em;
     width: 400px;
   }
   .price-alert-info p:first-of-type {
@@ -135,7 +137,7 @@ input[type="number"] {
   }
   .price-alert-info p:last-of-type {
     margin-top: 10px;
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
   /*  .price-alert-info {
     height: 100%;
