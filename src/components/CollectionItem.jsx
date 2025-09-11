@@ -6,6 +6,7 @@ import { AppContext } from "../contextapi/AppContext";
 import styles from "./CollectionItem.module.css";
 
 function CollectionItem({ card }) {
+  const { user } = useContext(AppContext);
   const [updatedCardPrice, setUpdatedCardPrice] = useState(null);
   const [alertsOn, setAlertsOn] = useState(card.card_price_alert);
   const [priceAlertAmount, setPriceAlertAmount] = useState(
@@ -116,7 +117,7 @@ function CollectionItem({ card }) {
           Price Alerts:
           {alertsOn ? " Enabled" : " Disabled"}
         </p>
-        <p>
+        <p className={styles["email-notification-info"]}>
           {!alertsOn &&
           Number(priceAlertAmount) > Number(card.card_prices[0].tcgplayer_price)
             ? "Alerts are disabled."
@@ -125,6 +126,12 @@ function CollectionItem({ card }) {
             ? `You will get an email notification when ${card.name} reaches $${priceAlertAmount}`
             : "Number is not valid!"}
         </p>
+        {!user && alertsOn && (
+          <p className={styles["note-info"]}>
+            {" "}
+            Note: Must be logged in to recieve email notifications
+          </p>
+        )}
       </div>
     </div>
   );
