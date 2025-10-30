@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../contextapi/AppContext";
-import styles from "./LoginForm.module.css";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 function LoginForm() {
   const { user, setUser, setCollection } = useContext(AppContext);
@@ -12,6 +12,7 @@ function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [loggingIn, setLoggingIn] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     console.log("User:", user);
   }, [user]);
@@ -43,7 +44,6 @@ function LoginForm() {
 
       if (response.ok) {
         setUser(() => data.user);
-
         setCollection(() => data.user.cardCollection);
         setLoggingIn(true);
         setTimeout(() => {
@@ -61,41 +61,59 @@ function LoginForm() {
   }
 
   return (
-    <div className={styles["login-form"]}>
-      <h2 className={styles["form-header"]}>Login</h2>
+    <div className="max-w-md mx-auto my-12 p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-amber-500/20">
+      <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+        Login
+      </h2>
 
       {loggingIn && user ? (
-        <>
-          <div className={styles["loader"]}></div>
-          <span>Please wait...</span>
-        </>
+        <div className="text-center">
+          <Spinner />
+          <span className="text-amber-500 font-semibold">Please wait...</span>
+        </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div className={styles["form-field"]}>
-            <label>Email:</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="block text-gray-300 font-semibold">Email:</label>
             <input
+              disabled={loading}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+              placeholder="Enter your email"
             />
           </div>
-          <div className={styles["form-field"]}>
-            <label>Password:</label>
+          <div className="space-y-2">
+            <label className="block text-gray-300 font-semibold">
+              Password:
+            </label>
             <input
+              disabled={loading}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+              placeholder="Enter your password"
             />
           </div>
-          <button type="submit" disabled={loading}>
-            Login
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-gray-900 font-bold rounded-lg shadow-lg hover:shadow-amber-500/50 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       )}
 
-      {error && <p className={styles.error}>{error}</p>}
+      {error && (
+        <p className="mt-4 text-red-400 text-center bg-red-900/20 border border-red-500/50 rounded-lg p-3">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

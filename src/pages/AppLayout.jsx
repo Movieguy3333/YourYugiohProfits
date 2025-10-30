@@ -9,10 +9,12 @@ import Instructions from "../components/Instructions";
 
 function AppLayout() {
   return (
-    <div className="app">
+    <div className="min-h-screen">
       <AppNav />
-      <Outlet />
-      <Collection />
+      <div className="container mx-auto px-4">
+        <Outlet />
+        <Collection />
+      </div>
     </div>
   );
 }

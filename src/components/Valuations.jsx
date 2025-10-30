@@ -1,6 +1,5 @@
 import { useContext, useMemo } from "react";
 import { AppContext } from "../contextapi/AppContext";
-import styles from "./Valuations.module.css";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
@@ -54,8 +53,8 @@ function Valuations() {
           label: "Card Quantity",
           data: Object.values(priceTiers),
           backgroundColor: ["#FFD700", "#00BFFF", "#32CD32", "#FF4500"],
-          borderColor: "#22",
-          borderWidth: 6,
+          borderColor: "#1f2937",
+          borderWidth: 4,
         },
       ],
     };
@@ -84,35 +83,78 @@ function Valuations() {
   }, [collection]);
 
   return (
-    <div className={styles.valuation}>
+    <div className="container mx-auto px-4 py-8">
       {collection.length > 0 ? (
-        <>
-          <h1 className={styles["collection-value-header"]}>
-            {" "}
-            Collection Value: ${totalCollectionValue}
-          </h1>
-          <h1>You have {totalCards} cards</h1>
-
-          <div className={styles.chart}>
-            <h2>Card Value Distribution</h2>
-            <Pie data={pieChartData} />
+        <div className="space-y-8">
+          {/* Value Header */}
+          <div className="text-center space-y-4 bg-gradient-to-r from-green-900/30 to-emerald-900/30 p-8 rounded-2xl border-2 border-green-500/50 shadow-2xl">
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+              💰 ${totalCollectionValue}
+            </h1>
+            <p className="text-2xl text-gray-300">Total Collection Value</p>
+            <p className="text-xl text-gray-400">
+              You have <span className="text-amber-400 font-bold">{totalCards}</span> cards in your collection
+            </p>
           </div>
 
-          <div className={styles["valuation-item"]}>
-            <h3>Highest Value Card:</h3>
-            <img
-              src={highestValueCard.card_images[0].image_url}
-              alt={highestValueCard.name}
-              className={styles["card-image"]}
-            />
+          {/* Chart and Highest Value Card */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Chart */}
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border-2 border-amber-500/20">
+              <h2 className="text-3xl font-bold text-amber-400 mb-6 text-center">
+                📊 Card Value Distribution
+              </h2>
+              <div className="max-w-md mx-auto">
+                <Pie 
+                  data={pieChartData}
+                  options={{
+                    plugins: {
+                      legend: {
+                        labels: {
+                          color: '#d1d5db',
+                          font: {
+                            size: 14,
+                            weight: 'bold'
+                          }
+                        }
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Highest Value Card */}
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border-2 border-amber-500/20">
+              <h3 className="text-3xl font-bold text-amber-400 mb-6 text-center">
+                👑 Highest Value Card
+              </h3>
+              <div className="flex flex-col items-center space-y-4">
+                <img
+                  src={highestValueCard.card_images[0].image_url}
+                  alt={highestValueCard.name}
+                  className="w-full max-w-xs rounded-lg shadow-2xl border-2 border-amber-500/30"
+                />
+                <p className="text-xl font-bold text-amber-400 text-center">
+                  {highestValueCard.name}
+                </p>
+                <p className="text-3xl font-bold text-green-400">
+                  ${highestValueCard.card_prices[0].tcgplayer_price}
+                </p>
+              </div>
+            </div>
           </div>
-        </>
+        </div>
       ) : (
-        <>
-          <h1 className={styles["no-collection"]}>
-            No collection to evaluate... 😢{" "}
+        <div className="text-center py-20">
+          <div className="text-8xl mb-6">📦</div>
+          <h1 className="text-4xl font-bold text-gray-400 mb-4">
+            No collection to evaluate...
           </h1>
-        </>
+          <p className="text-xl text-gray-500">
+            Add some cards to your collection to see valuations!
+          </p>
+        </div>
       )}
     </div>
   );

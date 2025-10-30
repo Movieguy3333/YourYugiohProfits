@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./SignUpForm.module.css";
 import { AppContext } from "../contextapi/AppContext";
 import Spinner from "./Spinner";
 
@@ -52,46 +51,72 @@ function SignUpForm() {
   }
 
   return (
-    <div className={styles.form}>
-      <h2 className={styles.formHeader}>Sign-Up</h2>
+    <div className="max-w-md mx-auto my-12 p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-amber-500/20">
+      <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+        Sign-Up
+      </h2>
       {isLoading ? (
         <Spinner />
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div className={styles.formField}>
-            <label>Username:</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="block text-gray-300 font-semibold">
+              Username:
+            </label>
             <input
+              disabled={isLoading}
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+              placeholder="Choose a username"
             />
           </div>
-          <div className={styles.formField}>
-            <label>Email:</label>
+          <div className="space-y-2">
+            <label className="block text-gray-300 font-semibold">Email:</label>
             <input
+              disabled={isLoading}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+              placeholder="Enter your email"
             />
           </div>
-          <div className={styles.formField}>
-            <label>Password:</label>
+          <div className="space-y-2">
+            <label className="block text-gray-300 font-semibold">
+              Password:
+            </label>
             <input
+              disabled={isLoading}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+              placeholder="Create a password"
             />
           </div>
-          <button type="submit">Sign-Up</button>
+          <button
+            type="submit"
+            className="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-gray-900 font-bold rounded-lg shadow-lg hover:shadow-amber-500/50 transform hover:scale-105 transition-all duration-300"
+          >
+            Sign-Up
+          </button>
         </form>
       )}
       {error && (
-        <h2 className={styles.error}>Email or Username already used</h2>
+        <p className="mt-4 text-red-400 text-center bg-red-900/20 border border-red-500/50 rounded-lg p-3">
+          Email or Username already used
+        </p>
       )}
-      {success && <h2 className={styles.success}>{success} Redirecting...</h2>}
+      {success && (
+        <p className="mt-4 text-green-400 text-center bg-green-900/20 border border-green-500/50 rounded-lg p-3">
+          {success} Redirecting...
+        </p>
+      )}
     </div>
   );
 }
