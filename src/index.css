@@ -21,8 +21,84 @@
   .text-stroke {
     -webkit-text-stroke: 0.5px black;
   }
-  
+
   .text-stroke-gold {
     -webkit-text-stroke: 0.5px #f59e0b;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Landing page motion + texture utilities                            */
+/* ------------------------------------------------------------------ */
+
+/* Subtle gold grid, faded toward the edges via a radial mask */
+.bg-grid-gold {
+  background-image:
+    linear-gradient(to right, rgba(245, 158, 11, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 35%, transparent 100%);
+          mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 35%, transparent 100%);
+}
+
+/* Animated gold gradient text — pair with a bg-[length:200%_auto] gradient */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.animate-gradient { animation: gradient-pan 5s linear infinite; }
+
+/* Gentle floating for the hero card mockups */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-y 8s ease-in-out infinite; }
+
+/* Entrance: rise + fade */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Holographic sheen that sweeps across card art */
+@keyframes holo-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  60%, 100% { transform: translateX(220%) skewX(-18deg); }
+}
+.animate-holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 70%
+  );
+  animation: holo-sweep 4.5s ease-in-out infinite;
+}
+
+/* Slow pulsing glow for ambient orbs / badges */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+.animate-pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient,
+  .animate-float,
+  .animate-float-slow,
+  .animate-fade-up,
+  .animate-holo::after,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+  .animate-fade-up { opacity: 1; }
 }
